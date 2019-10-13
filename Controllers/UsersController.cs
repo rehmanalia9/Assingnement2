@@ -88,7 +88,7 @@ namespace Assingment_Test_2.Controllers
         public IActionResult Logout()
         {
             HttpContext.Session.Clear();
-            return RedirectToAction(nameof(Login));
+            return RedirectToAction("Login");
         }
 
         public IActionResult AdminDashboard()
