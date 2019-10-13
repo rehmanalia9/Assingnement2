@@ -64,7 +64,7 @@ namespace Assingment_Test_2.Controllers
 
             if (U == null)
             {
-                ViewBag.Message = "Invalid UserName ";
+                ViewBag.Message = "Invalid your Username  ";
                 return View(_U);
             }
 
@@ -93,11 +93,21 @@ namespace Assingment_Test_2.Controllers
 
         public IActionResult AdminDashboard()
         {
+            if (HttpContext.Session.GetString("Username") == null)
+            {
+                return RedirectToAction("Login");
+            }
             return View();
+           
         }
 
         public IActionResult StaffDashboard()
         {
+            if (HttpContext.Session.GetString("Username") == null)
+            {
+                return RedirectToAction("Login");
+            }
+            
             return View();
         }
 
