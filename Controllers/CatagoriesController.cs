@@ -52,18 +52,7 @@ namespace Assingment_Test_2.Controllers
 
         public IActionResult Index(string f = "")
         {
-            
-
-
-
-            if (string.IsNullOrEmpty(HttpContext.Session.GetString("Role")))
-            {
-                return RedirectToAction("Login", "SystemUsers");
-            }
-
-
-
-
+         
 
             if (f == "")
             {

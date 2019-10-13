@@ -8,7 +8,7 @@ namespace Assingment_Test_2.Models
     {
         public int Id { get; set; }
         [Required(ErrorMessage = "Please enter your name.")]
-        [MaxLength(10)]
+        [MaxLength(15)]
         [MinLength(3)]
         public string Username { get; set; }
         public string DisplayName { get; set; }

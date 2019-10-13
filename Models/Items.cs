@@ -7,7 +7,7 @@ namespace Assingment_Test_2.Models
     public partial class Items
     {
         public int Id { get; set; }
-        [Required(ErrorMessage = "please enter Catagory required!!.")]
+        [Required(ErrorMessage = "please enter Catagory ID required!!.")]
         public string CatagoryId { get; set; }
 
         [Required(ErrorMessage = "Please enter your name.")]
