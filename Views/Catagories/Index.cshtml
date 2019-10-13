@@ -1,0 +1,102 @@
+﻿@model IEnumerable<Assingment_Test_2.Models.Catagories>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Picture)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Picture)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    <a href="/Catagories/Index?id=@item.Id" class="btn btn-sm btn-success"> View</a>
+
+
+
+
+                    @if (Context.Session.GetString("Role") == "Admin")
+
+                    {
+                        <a href="/Catagories/Edit?id=@item.Id" class="btn btn-sm btn-warning">Edit</a>
+                        <a href="/Catagories/Delete?id=@item.Id" class="btn btn-sm btn-danger"> Delete</a>
+                    }
+                </td>
+            </tr>
+        }
+
+        @section Scripts{
+
+
+
+            $(function () {
+
+
+            $('.d').click(function () {
+            var DeleteButton = $(this);
+            var StudentID = DeleteButton.data("Catagoriesid");
+            DeleteButton.text("Please wait ...");
+            DeleteButton.removeClass("btn-danger");
+            DeleteButton.addClass("btn-success");
+            $.ajax({
+
+            url: '/Catagories/Delete',
+            type: 'POST',
+            data: {
+            id : ID
+            },
+            success: function (response) {
+            if (response == "1") {
+            DeleteButton.parent().parent().fadeOut(5000);
+
+
+
+            }
+            }
+
+
+
+
+            });
+
+
+            });
+
+
+
+
+            });
+
+
+        }
+
+    </tbody>
+</table>
